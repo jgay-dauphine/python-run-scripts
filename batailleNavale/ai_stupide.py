@@ -5,7 +5,7 @@ import sys
 def debug(message):
     sys.stderr.write('DBG_STUPIDE: ' + str(message) + '\n')
 
-turns = ['A1','A2','B1','B2','C1','C2','C3','D1','D2','D3','D4','E1','E2','E3','E4','E5']
+turns = ['A5','A2','B1','B2','C1','C2','C3','D1','D2','D3','D4','E1','E2','E3','E4','E5']
 
 # Grid DATA :
 # 0 : 

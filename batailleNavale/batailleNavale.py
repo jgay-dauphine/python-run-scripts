@@ -394,4 +394,4 @@ while(gameNotEnded):
 
     
     
-print("Joueur 1 à gagné" if player == 1 else "Joueur 2 à gagné")
+print("Joueur 1 a gagné" if player == 1 else "Joueur 2 a gagné")

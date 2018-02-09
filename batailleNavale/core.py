@@ -3,6 +3,7 @@
 # -*- coding: utf8 -*-
 
 import subprocess
+import platform
 
 def send_message(pipe, message):
     pipe.write(message)
@@ -29,12 +30,12 @@ def consume_board(game, sx, sy):
 
 def pause():
     print("Appuyez sur une touche pour continuer...")
-    raw_input()
+    # raw_input()
 
-game = subprocess.Popen(['python', '-u', 'batailleNavale.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+game = subprocess.Popen(['python', '-u', 'c:\\TP\\batailleNavale.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
-j1 = subprocess.Popen(['python', '-u', 'ai_stupide.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-j2 = subprocess.Popen(['python', '-u', 'ai_debile.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+j1 = subprocess.Popen(['python', '-u', 'c:\\TP\\ai_stupide.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+j2 = subprocess.Popen(['python', '-u', 'c:\\TP\\ai_debile.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
 
 # Setting up the game
@@ -143,11 +144,15 @@ while True:
     ## Pass pause
     s = read_message(game.stdout)
     print s
+
+    if s.startswith("Joueur 1 a") and platform.system().lower() == 'windows':
+        break
+    
     send_message(game.stdin, 'o')
     
     ## Pass pause :
     s = read_message(game.stdout)
-    print s
+    print "DBG", s
     ## If there is no message one player has win the game
     if s == '':
         # Send dummy message to avoid error:
@@ -175,6 +180,11 @@ while True:
     ## Pass pause
     s = read_message(game.stdout)
     print s
+
+    if s.startswith("Joueur 2 a") and platform.system().lower() == 'windows':
+        send_message(j1.stdin, str(board))
+        send_message(j2.stdin, str(board))
+        break
     ## If there is no message one player has win the game
     if s == '':
         # Send dummy message to avoid error:
