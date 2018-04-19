@@ -19,7 +19,7 @@ def clean():
     commands["Windows"] = "cls"
     commands["Darwin"] = "clear"
     os.system(commands[mon_os])
-    # print("\n" * 100) 
+    # print("\n" * 100)
 
 # Création d'un dictionnaire pour convertir en A en 0, B en 1...
 alpha = "abcdefghijklmnopqrstuvwxyz".upper()
@@ -40,7 +40,7 @@ def display_grille(game, isJoueur1):
     else:
         g1 = game["grille_p2"]
         g2 = game["grille_p2_p1"]
-    
+
     alpha = "abcdefghijklmnopqrstuvwxyz"
     
     if game["size_x"] < 10 :

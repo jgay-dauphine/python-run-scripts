@@ -131,7 +131,7 @@ while True:
     s = read_message(game.stdout)
     print s
     send_message(game.stdin, 'o')
- 
+
     ## Read board
     s = read_message(game.stdout)
     print s
