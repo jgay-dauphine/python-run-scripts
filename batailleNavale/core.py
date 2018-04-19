@@ -7,6 +7,7 @@ import platform
 
 def do_nothing(something):
     i = 0
+    i += 1
 
 def send_message(pipe, message):
     pipe.write(message)
@@ -130,7 +131,7 @@ while True:
     s = read_message(game.stdout)
     print s
     send_message(game.stdin, 'o')
-    
+ 
     ## Read board
     s = read_message(game.stdout)
     print s
@@ -153,7 +154,7 @@ while True:
 
     if s.startswith("Joueur 1 a") and platform.system().lower() == 'windows':
         break
-    
+
     send_message(game.stdin, 'o')
     
     ## Pass pause :

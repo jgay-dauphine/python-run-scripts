@@ -19,8 +19,7 @@ def clean():
     commands["Windows"] = "cls"
     commands["Darwin"] = "clear"
     os.system(commands[mon_os])
-    # print("\n" * 100)
-    
+    # print("\n" * 100) 
 
 # Création d'un dictionnaire pour convertir en A en 0, B en 1...
 alpha = "abcdefghijklmnopqrstuvwxyz".upper()
@@ -55,7 +54,7 @@ def display_grille(game, isJoueur1):
     for cpt in range(game["size_y"]):
         if game["size_x"] < 10 :
             print(str(cpt+1), ''.join(display_g1[cpt]),'  ', str(cpt+1), ''.join(display_g2[cpt]))
-        else : 
+        else :
             if cpt < 9:
                 print('',str(cpt+1), ''.join(display_g1[cpt]),'  ', str(cpt+1), ''.join(display_g2[cpt]))
             else :
@@ -106,7 +105,7 @@ def place_ships(game, isJoueur1):
             navires_joueur["navire"+str(cpt)]["touche"] = dict()
             
             print "Placez un", taille, "bateau de", game["navires"][taille]["taille"], "cases", "(%s/%s)" % (cpt_bateau_par_taille, game["navires"][taille]["nb"]), ":"
-            cpt_bateau_par_taille = cpt_bateau_par_taille +1 
+            cpt_bateau_par_taille = cpt_bateau_par_taille + 1
             
             coordonnees = ask_coordinates()
             print "Verical (v) ou horizontal (h) ?"
@@ -150,7 +149,7 @@ def ask_coordinates():
     print "Choisir les coordonnées ? format A1 : "
     coordonnees = raw_input()
     
-    if game["size_y"] < 10: 
+    if game["size_y"] < 10:
         try:
             x = coordonnees[0].upper()
             y = int(coordonnees[1])
@@ -173,7 +172,7 @@ def ask_coordinates():
             y = int(coordonnees[1:])
         except ValueError:
             x = coordonnees[0]
-            y = coordonnees[1:]              
+            y = coordonnees[1:]
         while (len(coordonnees) != 2 and len(coordonnees) !=3) or x not in convertir.keys() or y not in range(1,game["size_y"]+1):
             print("Il faut rentrer une lettre et un chiffre !")
             print "Choisir les coordonnées ? format A1 : "
@@ -193,14 +192,14 @@ def ask_coordinates():
 # Rang 3
 def get_target(game, isJoueur1):
     coord = ask_coordinates()
-    verif = True 
+    verif = True
     if isJoueur1:
         while verif:
             if game["grille_p1_p2"][coord[0]][coord[1]]!=0:
                 print('Vous avez deja tapé a cet endroit, ressaisissez')
                 coord=ask_coordinates()
             else:
-                verif = False   
+                verif = False
    
         return(coord[0],coord[1])
     else:
@@ -374,7 +373,7 @@ while(gameNotEnded):
     if isJoueur1:
         if game["grille_p2"] == game["grille_p1_p2"]:
             gameNotEnded = False
-            player = 1 
+            player = 1
             break
     else:
         if game["grille_p1"] == game["grille_p2_p1"]:
