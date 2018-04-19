@@ -9,7 +9,6 @@ deux joueurs
 Created on Fri Jan 26 15:40:45 2018
 """
 
-
 import os
 import platform
 
@@ -19,7 +18,7 @@ def clean():
     commands["Linux"] = "clear"
     commands["Windows"] = "cls"
     commands["Darwin"] = "clear"
-    # os.system(commands[mon_os])
+    os.system(commands[mon_os])
     # print("\n" * 100)
     
 
@@ -101,6 +100,7 @@ def place_ships(game, isJoueur1):
     for taille in game["navires"]:
         cpt_bateau_par_taille = 1
         for nb_navires in range(game["navires"][taille]["nb"]):
+            nb_navires += 1
             navires_joueur["navire"+str(cpt)] = dict()
             navires_joueur["navire"+str(cpt)]["coordonnees"] = dict()
             navires_joueur["navire"+str(cpt)]["touche"] = dict()

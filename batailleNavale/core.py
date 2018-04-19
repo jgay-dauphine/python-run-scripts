@@ -5,6 +5,9 @@
 import subprocess
 import platform
 
+def do_nothing(something):
+    i = 0
+
 def send_message(pipe, message):
     pipe.write(message)
     pipe.write('\n')
@@ -17,6 +20,7 @@ def read_board(game, sx, sy):
     ret = []
     game_output = read_message(game.stdout)
     for i in range(sy):
+        i += 1
         game_output = read_message(game.stdout)
         s = game_output.split("'")[-2]
         ret.append([ 0 if c == '~' else 1 if c == 'O' else 2 if c == 'X' else 3 for c in s ])
@@ -26,7 +30,9 @@ def read_board(game, sx, sy):
 
 def consume_board(game, sx, sy):
     for i in range(sy+1):
+        i += 1
         game_output = read_message(game.stdout)
+        do_nothing(game_output)
 
 def pause():
     print("Appuyez sur une touche pour continuer...")
