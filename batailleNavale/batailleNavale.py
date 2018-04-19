@@ -42,7 +42,7 @@ def display_grille(game, isJoueur1):
         g2 = game["grille_p2_p1"]
 
     alpha = "abcdefghijklmnopqrstuvwxyz"
-    
+
     if game["size_x"] < 10 :
         print(" ", alpha[:game["size_x"] ].upper(), "    ", alpha[:game["size_x"] ].upper())
     else :

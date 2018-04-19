@@ -160,7 +160,7 @@ while True:
         break
 
     send_message(game.stdin, 'o')
-    
+
     ## Pass pause :
     s = read_message(game.stdout)
     print "DBG", s
