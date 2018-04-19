@@ -2,6 +2,7 @@
 
 # -*- coding: utf8 -*-
 
+import sys
 import subprocess
 
 def send_message(pipe, message):
@@ -16,7 +17,9 @@ def read_message(pipe):
 # Nombre d'iterations...
 nb = 5
 
-child = subprocess.Popen(['python', '-u', 'ai.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+python_exec = sys.executable
+
+child = subprocess.Popen([python_exec, '-u', 'ai.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
 send_message(child.stdin, str(nb))
 

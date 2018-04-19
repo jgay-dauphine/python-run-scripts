@@ -2,6 +2,7 @@
 
 # -*- coding: utf8 -*-
 
+import sys
 import subprocess
 
 def send_message(pipe, message):
@@ -28,8 +29,10 @@ winner["1,2"] = "j2"
 winner["2,0"] = "j2"
 winner["2,1"] = "j1"
 
-j1 = subprocess.Popen(['python', '-u', 'ai_stupide.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-j2 = subprocess.Popen(['python', '-u', 'ai_proba.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+python_exec = sys.executable
+
+j1 = subprocess.Popen([python_exec, '-u', 'ai_stupide.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+j2 = subprocess.Popen([python_exec, '-u', 'ai_proba.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
 send_message(j1.stdin, str(nb))
 send_message(j2.stdin, str(nb))

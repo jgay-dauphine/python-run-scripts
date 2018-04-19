@@ -2,6 +2,7 @@
 
 # -*- coding: utf8 -*-
 
+import sys
 import subprocess
 import platform
 
@@ -39,10 +40,13 @@ def pause():
     print("Appuyez sur une touche pour continuer...")
     # raw_input()
 
-game = subprocess.Popen(['python', '-u', 'c:\\TP\\batailleNavale.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
-j1 = subprocess.Popen(['python', '-u', 'c:\\TP\\ai_stupide.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-j2 = subprocess.Popen(['python', '-u', 'c:\\TP\\ai_debile.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+pyton_exec = sys.executable
+
+game = subprocess.Popen([python_exec, '-u', 'c:\\TP\\batailleNavale.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+
+j1 = subprocess.Popen([python_exec, '-u', 'c:\\TP\\ai_stupide.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+j2 = subprocess.Popen([python_exec, '-u', 'c:\\TP\\ai_debile.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
 
 # Setting up the game
